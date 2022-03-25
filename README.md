@@ -35,9 +35,11 @@ Introduction
      https://www.jetbrains.com/pycharm/download/
 
   Selenium Browser Driver
-     FireFox Driver version 0.30.0
+  
+  * FireFox Driver version 0.30.0
          https://github.com/mozilla/geckodriver/releases
-     Chrome Driver version 99.0.4844.51
+	 
+  * Chrome Driver version 99.0.4844.51
          http://chromedriver.chromium.org/downloads
 
   * Intstallation of Selenium Browser Driver

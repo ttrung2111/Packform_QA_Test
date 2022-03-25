@@ -44,11 +44,11 @@ Introduction
 
   * Intstallation of Selenium Browser Driver
 
-     Linux
+     Linux: 
          Copy Browser Driver to /usr/local/bin
          and set chmod 0755 to it
 
-     Window
+     Window: 
          Copy Browser Driver to the same folder of Test Project
 	
 

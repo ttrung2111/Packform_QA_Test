@@ -21,7 +21,7 @@ ____________________________________________________________
 
   * This is automation test that used for packform.com
   * It is written by Python and run on Selenium
-  * Script code file is put in \Packform_Test\main.py
+  * Script code file is put in \pythonProject\main.py
 
 < Enviroments and Installation>
 

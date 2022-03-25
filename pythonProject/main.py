@@ -10,7 +10,7 @@ class AutomationTestSelenium:
         """
         Initialize
         """
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
 
     def set_window_size(self, width, height):
         """
@@ -30,7 +30,7 @@ class AutomationTestSelenium:
         # navigate to home page if not
         if self.driver.current_url != url:
             self.driver.get(url)
-            sleep(3)
+            sleep(2)
 
     def check_display(self):
         """
@@ -124,7 +124,7 @@ class AutomationTestSelenium:
 
         if sign_up_item is not False:
             sign_up_item.click()
-            sleep(3)
+            sleep(2)
 
             # check redirected url
             if self.driver.current_url == "https://app.packform.com/sign_up/customer":
@@ -162,7 +162,7 @@ class AutomationTestSelenium:
             self.driver.find_element(By.CSS_SELECTOR, ".fa-bars").click()
             self.driver.find_element(By.LINK_TEXT, "SIGN IN").click()
 
-        sleep(3)
+        sleep(2)
 
         # check redirected url
         if self.driver.current_url == "https://app.packform.com/sign_in":
@@ -215,20 +215,24 @@ class AutomationTestSelenium:
             print('"Film and Wrap" item and corresponding picture are visible')
 
             print('# Check pop up')
-            wait = WebDriverWait(self.driver, 10)
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//img[@src="/_nuxt/img/e49c4e9.png"]'))).click()
+            wait = WebDriverWait(self.driver, 5)
+            wait.until(EC.element_to_be_clickable(
+                (By.XPATH, '//span[text()="Film and Wrap"]/parent::div'))).click()
 
-            dialog_item = self.driver.find_element(By.CLASS_NAME, "components-catalog-SignupDialog__dialogContent--SCxIf")
+            dialog_item = self.driver.find_element(By.CLASS_NAME,
+                                                   "components-catalog-SignupDialog__dialogContent--SCxIf")
 
             if dialog_item.is_displayed():
 
                 print('Pop up dialog is visible')
 
                 # Check button of popup
-                dialog_sign_up_item = self.driver.find_element(By.XPATH, "//div[@class='components-catalog-SignupDialog__actions--sk1Mj']"
-                                                                         "//*[contains(text(),'Sign Up')]")
-                dialog_cancel_item = self.driver.find_element(By.XPATH, "//div[@class='components-catalog-SignupDialog__actions--sk1Mj']"
-                                                                        "//*[contains(text(),'Cancel')]")
+                dialog_sign_up_item = self.driver.find_element(By.XPATH,
+                                                               "//div[@class='components-catalog-SignupDialog__actions--sk1Mj']"
+                                                               "//*[contains(text(),'Sign Up')]")
+                dialog_cancel_item = self.driver.find_element(By.XPATH,
+                                                              "//div[@class='components-catalog-SignupDialog__actions--sk1Mj']"
+                                                              "//*[contains(text(),'Cancel')]")
 
                 if dialog_sign_up_item.is_displayed() and dialog_cancel_item.is_displayed():
                     print('Sign in button and Cancel button of Pop up dialog is visible')
@@ -267,9 +271,9 @@ if __name__ == '__main__':
     test = AutomationTestSelenium()
     test.set_window_size(1920, 1080)
 
-    # test.check_display()
-    # test.check_sign_up_page()
-    # test.check_sign_in_page()
+    test.check_display()
+    test.check_sign_up_page()
+    test.check_sign_in_page()
     test.check_catalog_page()
 
     # Close driver

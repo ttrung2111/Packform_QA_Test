@@ -1,6 +1,8 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class AutomationTestSelenium:
@@ -8,7 +10,7 @@ class AutomationTestSelenium:
         """
         Initialize
         """
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
 
     def set_window_size(self, width, height):
         """
@@ -211,6 +213,31 @@ class AutomationTestSelenium:
 
         if cat_text_item.is_displayed() and cat_img_item.is_displayed():
             print('"Film and Wrap" item and corresponding picture are visible')
+
+            print('# Check pop up')
+            wait = WebDriverWait(self.driver, 10)
+            wait.until(EC.element_to_be_clickable((By.XPATH, '//img[@src="/_nuxt/img/e49c4e9.png"]'))).click()
+
+            dialog_item = self.driver.find_element(By.CLASS_NAME, "components-catalog-SignupDialog__dialogContent--SCxIf")
+
+            if dialog_item.is_displayed():
+
+                print('Pop up dialog is visible')
+
+                # Check button of popup
+                dialog_sign_up_item = self.driver.find_element(By.XPATH, "//div[@class='components-catalog-SignupDialog__actions--sk1Mj']"
+                                                                         "//*[contains(text(),'Sign Up')]")
+                dialog_cancel_item = self.driver.find_element(By.XPATH, "//div[@class='components-catalog-SignupDialog__actions--sk1Mj']"
+                                                                        "//*[contains(text(),'Cancel')]")
+
+                if dialog_sign_up_item.is_displayed() and dialog_cancel_item.is_displayed():
+                    print('Sign in button and Cancel button of Pop up dialog is visible')
+                else:
+                    print('Sign in button and Cancel button of Pop up dialog is not visible')
+
+            else:
+                print('Pop up dialog did not appear')
+
         else:
             print('"Film and Wrap" item and corresponding picture are not visible')
 
@@ -240,9 +267,9 @@ if __name__ == '__main__':
     test = AutomationTestSelenium()
     test.set_window_size(1920, 1080)
 
-    test.check_display()
-    test.check_sign_up_page()
-    test.check_sign_in_page()
+    # test.check_display()
+    # test.check_sign_up_page()
+    # test.check_sign_in_page()
     test.check_catalog_page()
 
     # Close driver

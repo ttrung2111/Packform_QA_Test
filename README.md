@@ -14,9 +14,8 @@ Introduction
  About
  Enviroments and Installation
 
-============================================================
-Introduction
-============================================================
+
+< Introduction >
 
 < About >
 
@@ -38,7 +37,6 @@ Introduction
   Selenium Browser Driver
      FireFox Driver version 0.30.0
          https://github.com/mozilla/geckodriver/releases
-
      Chrome Driver version 99.0.4844.51
          http://chromedriver.chromium.org/downloads
 

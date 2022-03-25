@@ -10,18 +10,18 @@ ____________________________________________________________
 
 < Contents >
 
-Introduction
- About
- Enviroments and Installation
+ * Introduction
+ * About
+ * Enviroments and Installation
 
 
 < Introduction >
 
 < About >
 
-  This is automation test that used for packform.com
-  It is written by Python and run on Selenium
-  Script code file is put in \Packform_Test\main.py
+  * This is automation test that used for packform.com
+  * It is written by Python and run on Selenium
+  * Script code file is put in \Packform_Test\main.py
 
 < Enviroments and Installation>
 
